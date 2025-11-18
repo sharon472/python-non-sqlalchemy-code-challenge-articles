@@ -1,27 +1,30 @@
 
-
 class Author:
-    all = []
 
-    def __init__(self, name):
-        if not isinstance(name, str) or len(name.strip()) == 0:
-            raise Exception("Name must be a non-empty string")
-        self._name = name
-        Author.all.append(self)
+    def __init__(self, name):# __init__ it is a magic method
+        self._set_name(name)
+       
+        def _set_name(self, name):
+             
+         if len(name) == 0:
+            raise ValueError("Name must not be empty.")
+        
+        
+            self._name = name
+            #importance of property
+            #it is a decorator that turns a method into a read-only attribute.
+#Allows you to access the name
+#Prevents others from modifying the name
+#Lets the class validate the data before storing it
+@property
 
-    @property
-    def name(self):
+def name(self):
         return self._name
 
-    def articles(self):
-        """Return all articles written by this author"""
-        return [article for article in Article.all if article.author == self]
+# setter and getter 
+#Getter- A method that reads/returns the value of a property.
 
-    def magazines(self):
-        """Return unique list of magazines this author has contributed to"""
-        return list({article.magazine for article in self.articles()})
-
-
+#Setter- A method that modifies/sets the value of a property
 
 
 
