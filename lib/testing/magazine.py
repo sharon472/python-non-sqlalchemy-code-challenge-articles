@@ -1,3 +1,4 @@
+from article import Article
 class Magazine:
     def __init__(self, name, category):
         
@@ -41,5 +42,11 @@ class Magazine:
             raise ValueError("Category must contain at least one character.")
 
         self._category = value
+
+    def articles(self):
+        return [article for article in Article.all_articles if article.magazine == self]
+
+    def contributors(self):
+        return list({article.author for article in self.articles()})
 
 

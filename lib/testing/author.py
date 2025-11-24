@@ -1,7 +1,8 @@
+from article import Article 
 class Author:
     def __init__(self, name):
-        # call the setter once via attribute assignment
-        self.name = name   # goes through our setter
+        
+        self.name = name   
 
     @property
     def name(self):
@@ -9,18 +10,24 @@ class Author:
 
     @name.setter
     def name(self, value):
-        # If _name already exists, we forbid changing it (use hasattr)
+        
         if hasattr(self, "_name"):
             raise AttributeError("Author name cannot be changed after instantiation.")
 
-        # Validate the incoming value
+        
         if not isinstance(value, str):
             raise TypeError("Author name must be a string.")
         if len(value.strip()) == 0:
             raise ValueError("Author name must be at least 1 non-whitespace character.")
 
-        # If valid and this is first assignment, set private attr
+    
         self._name = value
+
+    def articles(self):
+        return [article for article in Article.all_articles if article.author == self]
+
+    def magazines(self):
+        return list({article.magazine for article in self.articles()})
 
 
 
