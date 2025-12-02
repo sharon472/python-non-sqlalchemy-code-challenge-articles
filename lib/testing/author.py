@@ -29,14 +29,7 @@ class Author:
     def magazines(self):
         return list({article.magazine for article in self.articles()})
     
-    def add_article(self, magazine, title):
-     return Article(self, magazine, title)
-
-    def topic_areas(self):
-        magz = self.magazines()
-        if not magz:
-         return None    
-        return list({mag.category for mag in magz})
+   
 
 
 

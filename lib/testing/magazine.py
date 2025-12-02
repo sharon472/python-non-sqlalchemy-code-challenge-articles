@@ -1,6 +1,7 @@
 from article import Article
 class Magazine:
-    def __init__(self, name, category):
+     all_magazines = []  
+     def __init__(self, name, category):
         
         self._name = None
         self._category = None
@@ -10,12 +11,12 @@ class Magazine:
         self.category = category
 
     
-    @property
-    def name(self):
+     @property
+     def name(self):
         return self._name
 
-    @name.setter
-    def name(self, value):
+     @name.setter
+     def name(self, value):
         
         if not isinstance(value, str):
             raise TypeError("Name must be a string.")
@@ -27,12 +28,12 @@ class Magazine:
         self._name = value
 
     
-    @property
-    def category(self):
+     @property
+     def category(self):
         return self._category
 
-    @category.setter
-    def category(self, value):
+     @category.setter
+     def category(self, value):
         
         if not isinstance(value, str):
             raise TypeError("Category must be a string.")
@@ -43,10 +44,14 @@ class Magazine:
 
         self._category = value
 
-    def articles(self):
+     def articles(self):
         return [article for article in Article.all_articles if article.magazine == self]
 
-    def contributors(self):
+     def contributors(self):
         return list({article.author for article in self.articles()})
+    #added bonus 1
+     def article_titles(self):
+        titles = [article.title for article in self.articles()]
+        return titles if titles else None
 
 
