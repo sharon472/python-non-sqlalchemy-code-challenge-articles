@@ -20,9 +20,6 @@ class Article:
 
         Article.all_articles.append(self)
 
-    
-
-
     @property
     def title(self):
          return self._title
@@ -127,7 +124,7 @@ class Magazine:
     def contributors(self):
         return list({article.author for article in self.articles()})
 
-    # Bonus methods
+    
     def article_titles(self):
         titles = [article.title for article in self.articles()]
         return titles if titles else None
