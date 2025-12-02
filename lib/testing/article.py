@@ -3,7 +3,8 @@ from author import Author
 from magazine import Magazine
 
 class Article:
-    all = []  
+             
+    all_articles = []
 
     def __init__(self, author, magazine, title):
         if not isinstance(author, Author):
@@ -19,7 +20,7 @@ class Article:
         self.author = author
         self.magazine = magazine
 
-        Article.all.append(self) 
+        Article.all_articles.append(self) 
 
     @property
     def title(self):

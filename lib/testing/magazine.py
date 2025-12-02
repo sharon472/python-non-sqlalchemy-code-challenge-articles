@@ -9,6 +9,7 @@ class Magazine:
         
         self.name = name
         self.category = category
+        Magazine.all_magazines.append(self) 
 
     
      @property
